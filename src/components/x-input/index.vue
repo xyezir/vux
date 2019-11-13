@@ -350,6 +350,7 @@ export default {
       this.currentValue = ''
       this.focus()
       this.$emit('on-click-clear-icon')
+      this.isFocus = false
     },
     focus () {
       this.$refs.input.focus()
@@ -372,7 +373,6 @@ export default {
     onBlur ($event) {
       this.setTouched()
       this.validate()
-      this.isFocus = false
       this.$emit('on-blur', this.currentValue, $event)
     },
     onKeyUp (e) {
