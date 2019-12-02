@@ -159,6 +159,9 @@ import Debounce from '../../tools/debounce'
 
 import mask from 'vanilla-masker'
 
+var regAmount=/^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/;
+
+
 const validators = {
   'email': {
     fn: isEmail,
@@ -175,6 +178,12 @@ const validators = {
       return str.length >= 2 && str.length <= 6
     },
     msg: '中文姓名'
+  },
+  'amount': {
+    fn (str) {
+      return regAmount.test(str)
+    },
+    msg: '金额'
   }
 }
 export default {
