@@ -262,7 +262,8 @@ export default {
         return {}
       }
       return {
-        'vux-cell-justify': this.$parent.labelAlign === 'justify' || this.$parent.$parent.labelAlign === 'justify'
+        'vux-cell-justify': this.$parent.labelAlign === 'justify' || this.$parent.$parent.labelAlign === 'justify',
+        'vux-require': this.required
       }
     }
   },

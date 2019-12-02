@@ -152,3 +152,14 @@
 .vux-cell-primary {
   flex: 1;
 }
+
+.vux-require{
+  position: relative;
+  &:before{
+    display: inline-block;
+    content:'*';
+    position: absolute;
+    left:-8px;
+    color:red;
+  }
+}
