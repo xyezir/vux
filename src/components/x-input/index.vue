@@ -285,7 +285,8 @@ export default {
     },
     labelClass () {
       return {
-        'vux-cell-justify': this.$parent && (this.$parent.labelAlign === 'justify' || this.$parent.$parent.labelAlign === 'justify')
+        'vux-cell-justify': this.$parent && (this.$parent.labelAlign === 'justify' || this.$parent.$parent.labelAlign === 'justify'),
+        'vux-require':this.required
       }
     },
     pattern () {
@@ -623,5 +624,16 @@ export default {
   padding-top: 0;
   padding-right: 0;
   padding-bottom: 0;
+}
+
+.vux-require{
+  position: relative;
+  &:before{
+   display: inline-block;
+   content:'*';
+   position: absolute;
+   left:-8px;
+   color:red;
+  }
 }
 </style>
