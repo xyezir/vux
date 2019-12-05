@@ -131,6 +131,7 @@ export default {
       })
     },
     onComposition ($event, type) {
+      window.scrollTo(0, 0);
       if (type === 'start') {
         this.onInput = true
       }
@@ -147,11 +148,7 @@ export default {
     clear () {
       this.currentValue = ''
       this.emitEvent()
-      this.isFocus = true
       this.setFocus()
-      if (this.autoFixed && !this.isFixed) {
-        this.isFixed = true
-      }
       this.$emit('on-clear')
     },
     cancel () {
@@ -168,20 +165,21 @@ export default {
       this.isFixed = false
     },
     touch () {
+      window.scrollTo(0, 0)
+      this.$emit('on-touch')
+    },
+    setFocus () {
+      this.isFocus = true
       this.isCancel = false
       if (this.autoFixed) {
         this.isFixed = true
       }
-      this.$emit('on-touch')
-    },
-    setFocus () {
       this.$refs.input.focus()
     },
     setBlur () {
       this.$refs.input.blur()
     },
     onFocus () {
-      this.isFocus = true
       this.$emit('on-focus')
       this.touch()
     },
@@ -202,13 +200,8 @@ export default {
   watch: {
     isFixed (val) {
       if (val === true) {
-        this.setFocus()
-        this.isFocus = true
-
         if (this.autoScrollToTop) {
-          setTimeout(() => {
-            window.scrollTo(0, 0)
-          }, 150)
+          window.scrollTo(0, 0)
         }
       } else {}
     },
@@ -241,19 +234,19 @@ export default {
   overflow-y: auto;
   position: fixed;
   width: 100%;
-  max-height: 100%;
+  height: 100vh;
 
   .weui-cell:last-child {
     margin-bottom: 150px;
   }
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
 
-  &::after {
-    display: none;
-  }
+  // &::after {
+  //   display: none;
+  // }
 }
 .vux-search-mask {
   position: absolute;

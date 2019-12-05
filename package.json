@@ -1,6 +1,6 @@
 {
   "name": "xf-vux",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "main": "index.js",
   "description": "Mobile web UI based on Vue and WeUI",
   "keywords": [
